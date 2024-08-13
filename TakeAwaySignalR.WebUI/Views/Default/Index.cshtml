@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@section Scripts{
+
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <script type="text/javascript">
+                    $(document).ready(() => {
+                        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7162/signalrhub").build();
+                        $("#constatus").text(connection.state);
+                        connection.start().then(() => {
+                            $("#constatus").text(connection.state);
+                        }).catch((err) => { console.log(err) });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+}
+<div class="alert alert-primary">Bağlantının Durumu: <strong id="constatus"></strong></div>

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34112.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeAwaySignalR.WebApi", "TakeAwaySignalR.WebApi\TakeAwaySignalR.WebApi.csproj", "{E1210DA1-6C2C-46A5-A92B-EDE9087620AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeAwaySignalR.WebUI", "TakeAwaySignalR.WebUI\TakeAwaySignalR.WebUI.csproj", "{F79439AE-4AC7-4A69-9397-36C4A9AAD031}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E1210DA1-6C2C-46A5-A92B-EDE9087620AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1210DA1-6C2C-46A5-A92B-EDE9087620AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1210DA1-6C2C-46A5-A92B-EDE9087620AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79439AE-4AC7-4A69-9397-36C4A9AAD031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79439AE-4AC7-4A69-9397-36C4A9AAD031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79439AE-4AC7-4A69-9397-36C4A9AAD031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79439AE-4AC7-4A69-9397-36C4A9AAD031}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
