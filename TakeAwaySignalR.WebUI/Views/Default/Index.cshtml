@@ -15,9 +15,12 @@
                         $("#constatus").text(connection.state);
                         connection.start().then(() => {
                             $("#constatus").text(connection.state);
-                            connection.invoke("TotalDeliveryCount");
-                            connection.invoke("TotalDeliveryCountStatusByYolda");
-                            connection.invoke("TotalDeliveryCountStatusByHazirlaniyor");
+                            setInterval(() => {
+                                connection.invoke("TotalDeliveryCount");
+                                connection.invoke("TotalDeliveryCountStatusByYolda");
+                                connection.invoke("TotalDeliveryCountStatusByHazirlaniyor");
+                            }, 1000);
+                           
                         }).catch((err) => { console.log(err) });
                         connection.on("ReceiveTotalDeliveryCount", (value) => {
                             $("#txttotaldeliverycount").text(value);
@@ -27,6 +30,9 @@
                         });
                         connection.on("ReceiveTotalDeliveryCountStatusByHazirlaniyor", (value) => {
                             $("#txttotaldeliverycountstatusbyhazirlaniyor").text(value);
+                        });
+                        connection.on("ReceiveTotalDeliveryCountStatusByTeslimEdildi", (value) => {
+                            $("#txttotaldeliverycountstatusbyteslimedildi").text(value);
                         });
                     });
                 </script>
@@ -38,4 +44,4 @@
 <div class="alert alert-warning">Toplam Sipariş Sayısı: <strong id="txttotaldeliverycount"></strong></div>
 <div class="alert alert-info">Yoldaki Sipariş Sayısı: <strong id="txttotaldeliverycountstatusbyyolda"></strong></div>
 <div class="alert alert-danger">Hazırlanan Sipariş: <strong id="txttotaldeliverycountstatusbyhazirlaniyor"></strong></div>
-<div class="alert alert-dark">Teslim Edilen Sipariş: <strong id="constatus"></strong></div>
+<div class="alert alert-dark">Teslim Edilen Sipariş: <strong id="txttotaldeliverycountstatusbyteslimedildi"></strong></div>

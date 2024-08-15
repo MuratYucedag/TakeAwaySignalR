@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "DeliveryList";
+}
+
+<h1>Sipariş Listesi Tablo Ekranı</h1>
+
+@section Scripts{
+
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <script type="text/javascript">
+                    $(document).ready(() => {
+                        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7162/signalrhub").build();
+                        $("#constatus").text(connection.state);
+                        connection.start().then(() => {
+                            $("#constatus").text(connection.state);
+                            setInterval(() => {
+                                connection.invoke("GetDeliveryList");
+                            }, 5000);
+
+                        }).catch((err) => { console.log(err) });
+                        connection.on("ReceiveDeliveryList", (value) => {
+                            console.log(value);
+                            let tablehtml=`<table class=table table-bordered>
+                                          <tr>
+                                          <th>Sipariş Id</th>
+                                          <th>Ürün</th>
+                                          <th>Durum</th>
+                                          <th>Fiyat</th>
+                                          </tr>`
+                            $.each(value, (index, item) => {
+                                tablehtml += `<tr>
+                                            <td>${item.deliveryId}</td>            
+                                            <td>${item.product}</td>            
+                                            <td>${item.status}</td>            
+                                            <td>${item.totalPrice}</td>
+                                            </tr>`
+                            });
+                            tablehtml += `</table>`;
+                            $("#deliverylist").html(tablehtml);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+}
+<div id="deliverylist"></div>

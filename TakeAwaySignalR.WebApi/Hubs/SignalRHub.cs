@@ -14,6 +14,9 @@ namespace TakeAwaySignalR.WebApi.Hubs
         {
             var value1 = _context.Deliveries.Count();
             await Clients.All.SendAsync("ReceiveTotalDeliveryCount", value1);
+
+            var value4 = _context.Deliveries.Where(x => x.Status == "Teslim Edildi").Count();
+            await Clients.All.SendAsync("ReceiveTotalDeliveryCountStatusByTeslimEdildi", value4);
         }
         public async Task TotalDeliveryCountStatusByYolda()
         {
@@ -24,6 +27,11 @@ namespace TakeAwaySignalR.WebApi.Hubs
         {
             var value3 = _context.Deliveries.Where(x => x.Status == "Hazirlaniyor").Count();
             await Clients.All.SendAsync("ReceiveTotalDeliveryCountStatusByHazirlaniyor", value3);
+        }
+        public async Task GetDeliveryList()
+        {
+            var value = _context.Deliveries.ToList();
+            await Clients.All.SendAsync("ReceiveDeliveryList", value);
         }
     }
 }

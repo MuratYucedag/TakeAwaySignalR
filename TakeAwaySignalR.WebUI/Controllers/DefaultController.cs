@@ -8,5 +8,9 @@ namespace TakeAwaySignalR.WebUI.Controllers
         {
             return View();
         }
+        public IActionResult DeliveryList()
+        {
+            return View();
+        }
     }
 }
