@@ -12,18 +12,18 @@ namespace TakeAwaySignalR.WebApi.Hubs
         }
         public async Task TotalDeliveryCount()
         {
-            var value = _context.Deliveries.Count();
-            await Clients.All.SendAsync("ReceiveTotalDeliveryCount", value);
+            var value1 = _context.Deliveries.Count();
+            await Clients.All.SendAsync("ReceiveTotalDeliveryCount", value1);
         }
         public async Task TotalDeliveryCountStatusByYolda()
         {
-            var value = _context.Deliveries.Where(x => x.Status == "Yolda").Count();
-            await Clients.All.SendAsync("ReceiveTotalDeliveryCountStatusByYolda", value);
+            var value2 = _context.Deliveries.Where(x => x.Status == "Yolda").Count();
+            await Clients.All.SendAsync("ReceiveTotalDeliveryCountStatusByYolda", value2);
         }
         public async Task TotalDeliveryCountStatusByHazirlaniyor()
         {
-            var value = _context.Deliveries.Where(x => x.Status == "Hazirlaniyor").Count();
-            await Clients.All.SendAsync("ReceiveTotalDeliveryCountStatusByHazirlaniyor", value);
+            var value3 = _context.Deliveries.Where(x => x.Status == "Hazirlaniyor").Count();
+            await Clients.All.SendAsync("ReceiveTotalDeliveryCountStatusByHazirlaniyor", value3);
         }
     }
 }
